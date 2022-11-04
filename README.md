@@ -1,2 +1,2 @@
 # Solutions
-Solutions to problems I wrote in C++.
+Solutions to problems that I wrote in C++ while studying at the university.
