@@ -1,32 +1,38 @@
-// Given a sequence of numbers. Find minimum element from the given sequence.
+/*
+  Zero position.
 
-#include <algorithm>
+  In the given matrix find the position of the zero.
+*/
+
 #include <iostream>
 
 using namespace std;
 
 int main () 
 {
-	int y[2] = {-1000, 1000}, size, i, n;
+	int sizeN, sizeM, i = 0, n = 0;
 
-	cin >> size;
+	cin >> sizeN >> sizeM;
 
-	int x[size];
-	n = size - 1;
+	if (sizeN >= 1 && sizeM <= 100) {
+		int x[sizeN][sizeM], y[sizeN];
 
-	for (i = 0; i <= (size - 1); i++) {
-		cin >> x[i];
-		if (x[i] < y[0] || x[i] > y[1]) i--;
+		for (i = 0; i < sizeN; i++)
+			for (n = 0; n < sizeM; n++)
+				cin >> x[i][n];
+
+		for (i = 0; i < sizeN; i++) {
+			for (n = 0; n < sizeM; n++)
+				if (x[i][n] == 0) break;
+
+			if (x[i][n] == 0) break;
+		}
+
+		i += 1;
+		n += 1;
+
+		cout << i << " " << n;
 	}
 
-	while (n >= 0) {
-		for (i = (size - 1); i >= 0; i--)
-			if (x[n] >= x[i]) swap(x[i], x[n]);
-
-		i = (size - 1);
-		n--;
-	}
-
-	cout << x[0];
 	return 0;
 }
