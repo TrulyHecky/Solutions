@@ -1,40 +1,34 @@
 /*
-  Sorting.
-  Given N numbers and sequence of numbers than consist of integers (-1000 <= a[] <= 1000).
+  Sum above the main diagonal.
 
-  Output N numbers from the sequence in not descending order.
+  Calculate the total sum of element that are located above the main diagonal in a given NxN square table.
 */
 
-#include <algorithm>
 #include <iostream>
 
 using namespace std;
 
 int main () 
 {
-	int size, i, n;
+	int size, i = 0, n = 0, m = 0, res = 0;
 
 	cin >> size;
-	int x[size];
 
-	if (size >= 1 && size <= 1000) {
+	if (size >= 1 && size <= 100) {
+		int x[size][size];
 
-		for (i = 0; i <= (size - 1); i++)
-			cin >> x[i];
+		for (i = 0; i < size; i++)
+			for (n = 0; n < size; n++)
+				cin >> x[i][n];
 
-		n = size - 1;
-
-		while (n >= 0) {
-			for (i = (size - 1); i >= 0; i--)
-				if (x[n] >= x[i]) swap(x[i], x[n]);
+		for (i = 0; i < size; i++) {
+			for (n = size - 1; n > m; n--)
+				res += x[i][n];
+			m++;
 		}
-		
-		i = (size - 1);
-		n--;
+
+		cout << res;
 	}
 
-	for (i = 0; i <= (size - 1); i++)
-		cout << x[i] << " ";
-	
 	return 0;
 }
