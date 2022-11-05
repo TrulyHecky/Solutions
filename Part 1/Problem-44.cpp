@@ -1,63 +1,39 @@
-/*
-  Time sorting.
+// Your task is to find the column number (index) that have maximum sum of it's elements.
 
-  From input your program have to read N (1 <= N <= 100) - the total number of time interval than have to be sorted. Each line contains data in following format HH MM SS.
-  HH (hours) - from 0 to 23.
-  MM (minutes) - from 0 to 60.
-  SS (seconds) - from 0 to 60.
-
-  The output have to contain time intervals in nondescending order in given format.
-*/
-
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int main () 
 {
-	int size, i, n;
+	int sizeN, sizeM, i = 0, n = 0, max = 0;
 
-	cin >> size;
-	int x[3][size], sec[2][size];
+	cin >> sizeN >> sizeM;
 
-	if (size >= 1 && size <= 1000) {
-		n = 0;
+	if (sizeN >= 1 && sizeM <= 100) {
+		int x[sizeN][sizeM];
+		int y[sizeM];
 
-		for (i = 0; i <= (size - 1); i++) {
-			while (n <= 2) {
-				cin >> x[n][i];
-				n++;
-      }
-			n = 0;
+		for (i = 0; i < sizeN; i++)
+			for (n = 0; n < sizeM; n++)
+				cin >> x[i][n];
+
+		for (i = 0; i < sizeM; i++) {
+			y[i] = 0;
+			for (n = 0; n < sizeN; n++)
+				y[i] += x[n][i];
 		}
 
-		for (i = 0; i <= (size - 1); i++) {
-			sec[0][i] = (x[0][i] * 60 + x[1][i]) * 60 + x[2][i];
-			sec[1][i] = i;
-		}
+		max = *max_element(y, y + sizeM);
 
-		n = size - 1;
+		for (i = 0; i < sizeM; i++)
+			if (y[i] == max) break;
 
-		while (n >= 0) {
-			for (i = (size - 1); i >= 0; i--) {
-				if (sec[0][i] <= sec[0][n]) {
-					swap(sec[0][i], sec[0][n]);
-					swap(sec[1][i], sec[1][n]);
-				}
-			}
-			i = (size - 1);
-			n--;
-		}
+		i += 1;
 
-		n = 0;
-
-		for (i = 0; i <= (size - 1); i++) {
-			n = sec[1][i];
-			cout << x[0][n] << " " << x[1][n] << " " << x[2][n];
-			cout << endl;
-		}
+		cout << i;
 	}
-	
+
 	return 0;
 }
