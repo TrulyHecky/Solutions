@@ -1,4 +1,8 @@
-// Your task is to find out how many times letter 'A' can be found in given sequence.
+/*
+  Symmetric matrix.
+
+  You given square matrix. Your task is to check if the given matrix is symmetric according to it's main diagonal.
+*/
 
 #include <iostream>
 
@@ -6,21 +10,27 @@ using namespace std;
 
 int main () 
 {
-	int size, i, times = 0;
-	char y[] = "A";
+	int size, i = 0, n = 0, check;
 
 	cin >> size;
-	char x[size];
 
-	if (size >= 1 && size <= 1000) {
+	if (size >= 1 && size <= 100) {
+		int x[size][size];
 
-		for (i = 0; i <= (size - 1); i++)
-			cin >> x[i];
+		for (i = 0; i < size; i++) {
+			for (n = 0; n < size; n++) {
+				cin >> x[i][n];
+			}
+		}
 
-		for (i = (size - 1); i >= 0; i--)
-			if (x[i] == y[0]) times++;
-		
-		cout << times;
+		for (i = 0; i < size; i++) {
+			for (n = 0; n < size; n++) {
+				if (x[i][n] == x[n][i]) check = 1;
+				else {check = 0; break;}
+			}
+		}
+
+		cout << (check == 1 ? "YES" : "NO");
 	}
 
 	return 0;
