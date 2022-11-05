@@ -1,29 +1,42 @@
-// Read from the input the sequence of real numbers until zero. Output the square root of each number in the sequence in back order.
+/*
+  Diagonals.
+  
+  Calculate the total sum of numbers that are located on diagonals in a given square table NxN.
+*/
 
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
 int main () 
 {
-	double x[2][100];
-	int y[1] = {0}, i, n = 0;
+	int size, i, n, a = 0, b = 0;
 
-	for (i = 0; i <= 99; i++) {
-		cin >> x[0][i];
-		if (x[0][i] == y[0]) break;
+	cin >> size;
 
-		if (x[0][i] < y[0]) i--;
-		else x[1][i] = sqrt(x[0][i]);
-		n++;
+	if (size >= 1 && size <= 100) {
+		int x[size][size];
+
+		for (i = 0; i < size; i++) {
+			n = 0;
+			while (n < size) {
+				cin >> x[i][n];
+				n++;
+			}
+		}
+
+		for (i = 0; i < size; i++)
+			a += x[i][i];
+
+		n = 0;
+
+		for (i = (size - 1); i >= 0; i--) {
+			b += x[i][n];
+			n++;
+		}
+
+		cout << a << " " << b;
 	}
-
-	cout << n << endl;
-	n = i - 1;
-
-	for (i = n; i >= 0; i--)
-		cout << x[1][i] << endl;
 
 	return 0;
 }
