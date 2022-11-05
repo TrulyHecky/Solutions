@@ -1,4 +1,7 @@
-// Given a sequence of numbers. Find out how many times the maximum element of the sequence meets in the sequence.
+/*
+  You given two two-dimension arrays.
+  Your task is to sum each element of the given matrixes to the third one, and output result matrix.
+*/
 
 #include <iostream>
 
@@ -6,23 +9,42 @@ using namespace std;
 
 int main () 
 {
-	int size, i, max = (-10000), times = 0;
+	int size, i = 0, n = 0;
 
 	cin >> size;
-	int x[size];
 
-	if (size >= 1 && size <= 1000) {
+	if (size >= 1 && size <= 100) {
+		int x[size][size];
+		int y[size][size];
+		int z[size][size];
 
-		for (i = 0; i <= (size - 1); i++)
-			cin >> x[i];
+		for (i = 0; i < size; i++) {
+			for (n = 0; n < size; n++) {
+				cin >> x[i][n];
+			}
+		}
 
-		for (i = (size - 1); i >= 0; i--)
-			if (x[i] >= max) max = x[i];
+		for (i = 0; i < size; i++) {
+			for (n = 0; n < size; n++) {
+				cin >> y[i][n];
+			}
+		}
 
-		for (i = (size - 1); i >= 0; i--)
-			if (x[i] == max) times++;
+		for (i = 0; i < size; i++) {
+			for (n = 0; n < size; n++) {
+				z[i][n] = x[i][n] + y[i][n];
+			}
+		}
 
-		cout << times;
+		cout << endl;
+
+		for (i = 0; i < size; i++) {
+			for (n = 0; n < size; n++) {
+				cout << z[i][n] << " ";
+			}
+			cout << endl;
+		}
 	}
+
 	return 0;
 }
