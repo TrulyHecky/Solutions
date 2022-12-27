@@ -1,4 +1,7 @@
+// Create a function to calculate average of array's elements
+
 import java.util.Scanner;
+
 public class Main {
   public static double average(int length, int sum, int arr[]) {
     double average = 0;
